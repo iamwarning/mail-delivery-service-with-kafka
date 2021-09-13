@@ -1,0 +1,31 @@
+server:
+  port: 7500
+spring:
+  mail:
+    host: host.io
+    port: 465
+    username: support@host.io
+    password: c(_)st0m-p@ssw0rd
+    properties:
+      mail:
+        smtp:
+          auth: true
+          socketFactory:
+            port: 465
+            class: javax.net.ssl.SSLSocketFactory
+    protocol: smtp
+    test-connection: false
+
+kafka:
+  username: todo-username
+  password: todo-password
+  servers: ${KAFKA_SERVER:localhost:9092}
+  idempotence: true
+  acks: all
+  maxInFlightReq: 5
+  group-id: hero-consumer
+  auto-offset: earliest
+  mechanism: PLAIN
+  protocol: SASL_PLAINTEXT
+  topics:
+    data: send.email
